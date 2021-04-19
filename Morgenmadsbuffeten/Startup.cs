@@ -11,7 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Morgenmadsbuffeten.Data;
+using Morgenmadsbuffeten.Models;
 
 namespace Morgenmadsbuffeten
 {
@@ -34,10 +36,24 @@ namespace Morgenmadsbuffeten
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(
+                    "IsReceptionist",
+                    policyBuilder => policyBuilder
+                        .RequireClaim("Role", "Reception"));
+
+                options.AddPolicy(
+                    "IsWaiter",
+                    policyBuilder => policyBuilder
+                        .RequireClaim("Role", "Waiter"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<IdentityUser> userManager, ApplicationDbContext context,
+            ILogger<Startup> log)
         {
             if (env.IsDevelopment())
             {
@@ -57,6 +73,8 @@ namespace Morgenmadsbuffeten
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            SeedData.SeedUsers(userManager, log);
 
             app.UseEndpoints(endpoints =>
             {

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Morgenmadsbuffeten.Models;
 
 namespace Morgenmadsbuffeten.Data
 {
@@ -10,5 +12,6 @@ namespace Morgenmadsbuffeten.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
+        private DbSet<IdentityUser> Users { get; set; }
     }
 }
