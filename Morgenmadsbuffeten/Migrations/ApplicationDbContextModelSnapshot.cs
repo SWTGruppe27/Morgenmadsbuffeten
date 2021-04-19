@@ -219,6 +219,45 @@ namespace Morgenmadsbuffeten.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Morgenmadsbuffeten.Models.DataFromReception", b =>
+                {
+                    b.Property<int>("DateAndNumbersAndRoomnumberId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("NumberOfGuests")
+                        .HasColumnType("int");
+
+                    b.HasKey("DateAndNumbersAndRoomnumberId");
+
+                    b.ToTable("DataFromReceptions");
+                });
+
+            modelBuilder.Entity("Morgenmadsbuffeten.Models.DataFromRestaurant", b =>
+                {
+                    b.Property<int>("DateAndNumbersId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("NumbersOfAdults")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumbersOfChildren")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomNumber")
+                        .HasColumnType("int");
+
+                    b.HasKey("DateAndNumbersId");
+
+                    b.ToTable("DataFromRestaurants");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)

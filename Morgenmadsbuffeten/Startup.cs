@@ -32,13 +32,7 @@ namespace Morgenmadsbuffeten
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options =>
-                {
-                    options.SignIn.RequireConfirmedAccount = false;
-                    options.Password.RequireLowercase = false;
-                    options.Password.RequireNonAlphanumeric = false;
-                    options.Password.RequireUppercase = false;
-                })
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -79,7 +73,7 @@ namespace Morgenmadsbuffeten
 
             app.UseAuthentication();
             app.UseAuthorization();
-
+            
             SeedData.SeedUsers(userManager, log);
 
             app.UseEndpoints(endpoints =>

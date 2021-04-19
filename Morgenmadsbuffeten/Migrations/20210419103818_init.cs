@@ -47,6 +47,35 @@ namespace Morgenmadsbuffeten.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DataFromReceptions",
+                columns: table => new
+                {
+                    DateAndNumbersAndRoomnumberId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Date = table.Column<DateTime>(nullable: false),
+                    NumberOfGuests = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DataFromReceptions", x => x.DateAndNumbersAndRoomnumberId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DataFromRestaurants",
+                columns: table => new
+                {
+                    DateAndNumbersId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoomNumber = table.Column<int>(nullable: false),
+                    NumbersOfAdults = table.Column<int>(nullable: false),
+                    NumbersOfChildren = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DataFromRestaurants", x => x.DateAndNumbersId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -208,6 +237,12 @@ namespace Morgenmadsbuffeten.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "DataFromReceptions");
+
+            migrationBuilder.DropTable(
+                name: "DataFromRestaurants");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
