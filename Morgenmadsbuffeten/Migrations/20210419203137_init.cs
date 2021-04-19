@@ -47,24 +47,25 @@ namespace Morgenmadsbuffeten.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DataFromReceptions",
+                name: "DataFromReception",
                 columns: table => new
                 {
-                    DateAndNumbersAndRoomnumberId = table.Column<int>(nullable: false)
+                    DataFromReceptionId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Date = table.Column<DateTime>(nullable: false),
-                    NumberOfGuests = table.Column<int>(nullable: false)
+                    NumbersOfAdults = table.Column<int>(nullable: false),
+                    NumbersOfChildren = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DataFromReceptions", x => x.DateAndNumbersAndRoomnumberId);
+                    table.PrimaryKey("PK_DataFromReception", x => x.DataFromReceptionId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "DataFromRestaurants",
+                name: "DataFromRestaurant",
                 columns: table => new
                 {
-                    DateAndNumbersId = table.Column<int>(nullable: false)
+                    DataFromRestaurantId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RoomNumber = table.Column<int>(nullable: false),
                     NumbersOfAdults = table.Column<int>(nullable: false),
@@ -72,7 +73,7 @@ namespace Morgenmadsbuffeten.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DataFromRestaurants", x => x.DateAndNumbersId);
+                    table.PrimaryKey("PK_DataFromRestaurant", x => x.DataFromRestaurantId);
                 });
 
             migrationBuilder.CreateTable(
@@ -239,10 +240,10 @@ namespace Morgenmadsbuffeten.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "DataFromReceptions");
+                name: "DataFromReception");
 
             migrationBuilder.DropTable(
-                name: "DataFromRestaurants");
+                name: "DataFromRestaurant");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

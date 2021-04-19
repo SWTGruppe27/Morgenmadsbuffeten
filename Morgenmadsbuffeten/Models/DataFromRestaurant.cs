@@ -9,7 +9,7 @@ namespace Morgenmadsbuffeten.Models
     public class DataFromRestaurant
     {
         [Key]
-        public int DateAndNumbersId { get; set; }
+        public int DataFromRestaurantId { get; set; }
         [Required]
         public int RoomNumber { get; set; }
         public int NumbersOfAdults { get; set; }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Morgenmadsbuffeten.Models;
@@ -23,7 +24,19 @@ namespace Morgenmadsbuffeten.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [Authorize("IsReceptionist")]
+        public IActionResult AddGuestsToBreakfast()
+        {
+            return View();
+        }
+
+        [Authorize("IsWaiter")]
+        public IActionResult CheckGuestsIn()
+        {
+            return View();
+        }
+
+        public IActionResult Overview()
         {
             return View();
         }

@@ -9,9 +9,10 @@ namespace Morgenmadsbuffeten.Models
     public class DataFromReception
     {
         [Key]
-        public int DateAndNumbersAndRoomnumberId { get; set; }
+        public int DataFromReceptionId { get; set; }
         public DateTime Date { get; set; }
-        public int NumberOfGuests { get; set; }
+        public int NumbersOfAdults { get; set; }
+        public int NumbersOfChildren { get; set; }
 
     }
 }

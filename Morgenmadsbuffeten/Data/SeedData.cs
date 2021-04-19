@@ -35,8 +35,8 @@ namespace Morgenmadsbuffeten.Data
 
             //Passwords
             const string kitchenPassword = "food4life";
-            const string receptionPassword = "ripreception";
-            const string waiterPassword = "waiting";
+            const string receptionPassword = "ripreception4life";
+            const string waiterPassword = "waiting4life";
 
             string[] passwords = new[] {kitchenPassword, receptionPassword, waiterPassword };
             int counter = 0;
@@ -54,9 +54,9 @@ namespace Morgenmadsbuffeten.Data
                         var roleClaim = new Claim("Role", userRoles[counter]);
                         userManager.AddClaimAsync(applicationUser, roleClaim);
                     }
-
-                    counter++;
                 }
+
+                counter++;
             }
         }
     }

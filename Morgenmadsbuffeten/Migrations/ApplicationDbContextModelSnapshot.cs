@@ -221,7 +221,7 @@ namespace Morgenmadsbuffeten.Migrations
 
             modelBuilder.Entity("Morgenmadsbuffeten.Models.DataFromReception", b =>
                 {
-                    b.Property<int>("DateAndNumbersAndRoomnumberId")
+                    b.Property<int>("DataFromReceptionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -229,17 +229,20 @@ namespace Morgenmadsbuffeten.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("NumberOfGuests")
+                    b.Property<int>("NumbersOfAdults")
                         .HasColumnType("int");
 
-                    b.HasKey("DateAndNumbersAndRoomnumberId");
+                    b.Property<int>("NumbersOfChildren")
+                        .HasColumnType("int");
 
-                    b.ToTable("DataFromReceptions");
+                    b.HasKey("DataFromReceptionId");
+
+                    b.ToTable("DataFromReception");
                 });
 
             modelBuilder.Entity("Morgenmadsbuffeten.Models.DataFromRestaurant", b =>
                 {
-                    b.Property<int>("DateAndNumbersId")
+                    b.Property<int>("DataFromRestaurantId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -253,9 +256,9 @@ namespace Morgenmadsbuffeten.Migrations
                     b.Property<int>("RoomNumber")
                         .HasColumnType("int");
 
-                    b.HasKey("DateAndNumbersId");
+                    b.HasKey("DataFromRestaurantId");
 
-                    b.ToTable("DataFromRestaurants");
+                    b.ToTable("DataFromRestaurant");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

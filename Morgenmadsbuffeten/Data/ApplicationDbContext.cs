@@ -12,8 +12,8 @@ namespace Morgenmadsbuffeten.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-        public DbSet<DataFromReception> DataFromReceptions { get; set; }
-        public DbSet<DataFromRestaurant> DataFromRestaurants { get; set; }
+        public DbSet<DataFromReception> DataFromReception { get; set; }
+        public DbSet<DataFromRestaurant> DataFromRestaurant { get; set; }
     }
 
 }
