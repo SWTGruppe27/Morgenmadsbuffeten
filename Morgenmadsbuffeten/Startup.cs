@@ -38,6 +38,7 @@ namespace Morgenmadsbuffeten
                     options.Password.RequireLowercase = false;
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequireUppercase = false;
+
                 })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
