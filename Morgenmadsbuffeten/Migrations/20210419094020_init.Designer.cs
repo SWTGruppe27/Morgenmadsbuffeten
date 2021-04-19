@@ -10,7 +10,7 @@ using Morgenmadsbuffeten.Data;
 namespace Morgenmadsbuffeten.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210419085712_init")]
+    [Migration("20210419094020_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

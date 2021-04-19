@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace Morgenmadsbuffeten.Models
 {
-    public class DateAndNumbersAndRoomnumber
+    public class DataFromReception
     {
         public int DateAndNumbersAndRoomnumberId { get; set; }
         public DateTime Date { get; set; }
-        //public  Type { get; set; }
+        public int NumberOfGuests { get; set; }
+
     }
 }

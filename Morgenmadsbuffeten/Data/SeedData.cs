@@ -17,12 +17,15 @@ namespace Morgenmadsbuffeten.Data
             //Kitchen
             IdentityUser kitchenUser = new IdentityUser();
             kitchenUser.Email = "kitchen@breakfeastclub.com";
+            kitchenUser.UserName = kitchenUser.Email;
             //Reception
             IdentityUser receptionUser = new IdentityUser();
             receptionUser.Email = "reception@breakfeastclub.com";
+            receptionUser.UserName = receptionUser.Email;
             //Waiter
             IdentityUser waiterUser = new IdentityUser();
             waiterUser.Email = "waiter@breakfeastclub.com";
+            waiterUser.UserName = waiterUser.Email;
 
             Users.Add(kitchenUser);
             Users.Add(receptionUser);
@@ -32,7 +35,7 @@ namespace Morgenmadsbuffeten.Data
 
             //Passwords
             const string kitchenPassword = "food4life";
-            const string receptionPassword = "rip";
+            const string receptionPassword = "ripreception";
             const string waiterPassword = "waiting";
 
             string[] passwords = new[] {kitchenPassword, receptionPassword, waiterPassword };

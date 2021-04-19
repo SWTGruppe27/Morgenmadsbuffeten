@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Morgenmadsbuffeten.Models
 {
-    public class DateAndNumbers
+    public class DataFromRestaurant
     {
         public int DateAndNumbersId { get; set; }
         [Required]
-        public DateTime Date { get; set; }
+        public int RoomNumber { get; set; }
         public int NumbersOfAdults { get; set; }
         public int NumbersOfChildren { get; set; }
     }
