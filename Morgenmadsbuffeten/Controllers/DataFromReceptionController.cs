@@ -81,14 +81,37 @@ namespace Morgenmadsbuffeten.Controllers
             return View(dataFromReception);
         }
 
-        public async Task<IActionResult> ListAllGuetstsByDate(DateTime? dayTime)
+        public async Task<IActionResult> ListAllGuetstsByDate(DateTime? date)
         {
-            if (dayTime == null)
+            if (date == null)
             {
                 return NotFound();
             }
 
-            var list = await _context.DataFromReception.Where(x => x.Date.Date == dayTime).ToListAsync();
+            var list = await _context.DataFromReception.Where(x => x.Date.Date == date).ToListAsync();
+
+            int total = 0;
+            int totalAdults = 0;
+            int totalChildren = 0;
+
+            foreach(var item in list)
+            {
+
+                total += item.NumbersOfAdults + item.NumbersOfChildren;
+
+
+
+                totalAdults += item.NumbersOfAdults;
+
+
+                totalChildren += item.NumbersOfChildren;
+                ViewData["date"] = item.Date.ToString("d");
+            }
+
+            ViewData["total"] = total;
+            ViewData["totalAdults"] = totalAdults;
+            ViewData["totalChildren"] = totalChildren;
+            
 
             return View(list);
         }

@@ -6,53 +6,10 @@
 
 <h1>Check in information</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                Total
-            </th>
-            <th>
-                Total adults
-            </th>
-            <th>
-                Total Children
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<form action="/DataFromReception/ListAllGuetstsByDate" method="get" id="FindGuetsByDate">
+    <label>Date:</label>
+    <input type="date" required name="date" id="date"/>
+    <input type="submit" value="Ok" id="getListByDate" name="getListByDate"/>
+</form>
 
-            int total = 0;
-            total += item.NumbersOfAdults + item.NumbersOfChildren;
-
-
-            int totalAdults = 0;
-            totalAdults += item.NumbersOfAdults;
-
-            int totalChildren = 0;
-            totalChildren += item.NumbersOfChildren;
-
-            <tr>
-                <td>
-                    @item.Date.ToString("d")
-                </td>
-                <td>
-                    @total
-                </td>
-                <td>
-                    @totalAdults
-                </td>
-                <td>
-                    @totalChildren
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
 
