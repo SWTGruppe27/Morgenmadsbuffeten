@@ -81,6 +81,18 @@ namespace Morgenmadsbuffeten.Controllers
             return View(dataFromReception);
         }
 
+        public async Task<IActionResult> ListAllGuetstsByDate(DateTime? dayTime)
+        {
+            if (dayTime == null)
+            {
+                return NotFound();
+            }
+
+            var list = await _context.DataFromReception.Where(x => x.Date.Date == dayTime).ToListAsync();
+
+            return View(list);
+        }
+
         // POST: DataFromReception/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -148,6 +160,8 @@ namespace Morgenmadsbuffeten.Controllers
         private bool DataFromReceptionExists(int id)
         {
             return _context.DataFromReception.Any(e => e.DataFromReceptionId == id);
+            
         }
+
     }
 }
