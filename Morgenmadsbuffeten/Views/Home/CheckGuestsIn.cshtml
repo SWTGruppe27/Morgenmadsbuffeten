@@ -1,7 +1,11 @@
 ﻿
 @{
-    ViewData["Title"] = "CheckGuestsIn";
+    ViewData["Title"] = "Check Guests In";
 }
 
-<h1>CheckGuestsIn</h1>
+<h1>@ViewData["Title"]</h1>
+
+
+<button><a asp-area="" asp-controller="DataFromRestaurant" asp-action="Create">Check in</a></button>
+<button><a asp-area="" asp-controller="DataFromRestaurant" asp-action="Index">Edit check in</a></button>
 

@@ -1,7 +1,49 @@
-﻿
+﻿@model IEnumerable<Morgenmadsbuffeten.Models.DataFromRestaurant>
+
 @{
-    ViewData["Title"] = "AddGuestsToBreakfast";
+    ViewData["Title"] = "Add Guests To Breakfast";
 }
 
-<h1>AddGuestsToBreakfast</h1>
+<h1>@ViewData["Title"]</h1>
 
+<button><a asp-area="" asp-controller="DataFromReception" asp-action="Create">Add</a></button>
+
+<button><a asp-area="" asp-controller="DataFromReception" asp-action="Index">View list of guests</a></button>
+
+<br/>
+<br/>
+<br/>
+<h3>List of guests checked in today</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumbersOfAdults)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumbersOfChildren)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumbersOfAdults)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumbersOfChildren)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
