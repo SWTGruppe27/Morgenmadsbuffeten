@@ -28,7 +28,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Date)
+                 @(item.Date.ToString("d"))
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NumbersOfAdults)

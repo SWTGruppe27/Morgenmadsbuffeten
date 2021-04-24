@@ -1,45 +1,47 @@
 ﻿@model IEnumerable<Morgenmadsbuffeten.Models.DataFromReception>
 
 @{
-    ViewData["Title"] = "ListAllGuetstsByDate";
+    ViewData["Title"] = "List all guetsts by date";
 }
 
-<h1>ListAllGuetstsByDate</h1>
+<h1>@ViewData["Title"]</h1>
 
 
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                Total
-            </th>
-            <th>
-                Total adults
-            </th>
-            <th>
-                Total Children
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            Total
+        </th>
+        <th>
+            Total adults
+        </th>
+        <th>
+            Total Children
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>
-                @ViewData["date"]
-            </td>
-            <td>
-                @ViewData["total"]
-            </td>
-            <td>
-                @ViewData["totalAdults"]
-            </td>
-            <td>
-                @ViewData["totalChildren"]
+    <tr>
+        <td>
+            @ViewData["date"]
+        </td>
+        <td>
+            @ViewData["total"]
+        </td>
+        <td>
+            @ViewData["totalAdults"]
+        </td>
+        <td>
+            @ViewData["totalChildren"]
            
-            </td>
-        </tr>
+        </td>
+    </tr>
     </tbody>
 </table>
+
+<button id="getListByDate"><a asp-area="" asp-controller="Home" asp-action="Overview">Back to overview</a></button>
