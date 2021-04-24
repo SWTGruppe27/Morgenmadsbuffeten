@@ -1,15 +1,37 @@
-﻿@model IEnumerable<Morgenmadsbuffeten.Models.DataFromReception>
-
+﻿
 @{
     ViewData["Title"] = "Overview";
 }
 
-<h1>Check in information</h1>
+<h2>Check in information</h2>
+
+<label>Adults Checked in:</label> @ViewData["checkedInAdults"]
+<br />
+<label>Children Checked in:</label> @ViewData["checkedInChildren"]
+<br />
+<br />
+
+<h2>Not Check in yet information</h2>
+<label>Adults not Checked in:</label> @ViewData["notCheckedInAdults"]
+<br />
+<label>Children not Checked in:</label> @ViewData["notCheckedInChildren"]
+<br />
+<br />
+
+<h2>Information About Guests Signed Up To Breakfast</h2>
 
 <form action="/DataFromReception/ListAllGuetstsByDate" method="get" id="FindGuetsByDate">
     <label>Date:</label>
-    <input type="date" required name="date" id="date"/>
-    <input type="submit" value="Ok" id="getListByDate" name="getListByDate"/>
+    <input type="date" required name="date" id="date" />
+    <input type="submit" value="Ok" id="getListByDate" name="getListByDate" />
 </form>
+
+<br/>
+<br/>
+<form action="/Home/Overview">
+    <button type="submit">Refresh</button>
+</form>
+
+
 
 

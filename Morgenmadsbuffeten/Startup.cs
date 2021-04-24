@@ -80,8 +80,8 @@ namespace Morgenmadsbuffeten
 
             app.UseAuthentication();
             app.UseAuthorization();
-            
-            SeedData.SeedUsers(userManager, log);
+
+            SeedData.SeedUsers(userManager, log).Wait();
 
             app.UseEndpoints(endpoints =>
             {

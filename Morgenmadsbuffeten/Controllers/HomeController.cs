@@ -35,16 +35,54 @@ namespace Morgenmadsbuffeten.Controllers
             return View(await _context.DataFromRestaurant.ToListAsync());
         }
 
-        [Authorize("IsReceptionist")]
+        [Authorize("IsWaiter")]
         public IActionResult CheckGuestsIn()
         {
             return View();
         }
 
-
+        [Authorize]
         public async Task<IActionResult> Overview()
-    {
-            return View(await _context.DataFromReception.ToListAsync());
+        {
+            var dataFromRestaurantList = await _context.DataFromRestaurant.ToListAsync();
+            var dataFromReceptionList = await _context.DataFromReception.Where(r => r.Date == DateTime.Now.Date).ToListAsync();
+
+            int checkedInAdults = 0;
+            int checkedInChildren = 0;
+            int notCheckedInAdults = 0;
+            int notCheckedInChildren = 0;
+
+            foreach (var item in dataFromRestaurantList)
+            {
+                checkedInAdults += item.NumbersOfAdults;
+
+                checkedInChildren += item.NumbersOfChildren;
+            }
+
+            foreach (var item in dataFromReceptionList)
+            {
+                notCheckedInAdults += item.NumbersOfAdults;
+                notCheckedInChildren += item.NumbersOfChildren;
+            }
+                
+            notCheckedInAdults = notCheckedInAdults - checkedInAdults;
+            if (notCheckedInAdults < 0)
+            {
+                notCheckedInAdults = 0;
+            }
+            notCheckedInChildren = notCheckedInChildren - checkedInChildren;
+            if (notCheckedInChildren < 0)
+            {
+                notCheckedInChildren = 0;
+            }
+
+            ViewData["checkedInAdults"] = checkedInAdults;
+            ViewData["checkedInChildren"] = checkedInChildren;
+
+            ViewData["notCheckedInAdults"] = notCheckedInAdults;
+            ViewData["notCheckedInChildren"] = notCheckedInChildren;
+
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
