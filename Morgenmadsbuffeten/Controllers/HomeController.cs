@@ -29,7 +29,7 @@ namespace Morgenmadsbuffeten.Controllers
         }
 
 
-        [Authorize("IsWaiter")]
+        [Authorize("IsReceptionist")]
         public async Task<IActionResult> AddGuestsToBreakfast()
         {
             return View(await _context.DataFromRestaurant.ToListAsync());
