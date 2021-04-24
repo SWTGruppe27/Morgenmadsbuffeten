@@ -29,13 +29,13 @@ namespace Morgenmadsbuffeten.Controllers
         }
 
 
-        [Authorize("IsReceptionist")]
+        [Authorize("IsWaiter")]
         public async Task<IActionResult> AddGuestsToBreakfast()
         {
             return View(await _context.DataFromRestaurant.ToListAsync());
         }
 
-        [Authorize("IsReceptionist")]
+        [Authorize("IsWaiter")]
         public IActionResult CheckGuestsIn()
         {
             return View();
