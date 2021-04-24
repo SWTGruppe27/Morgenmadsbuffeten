@@ -9,9 +9,9 @@ using Morgenmadsbuffeten.Models;
 
 namespace Morgenmadsbuffeten.Data
 {
-    public class SeedData
+    public static class SeedData
     {
-        public static void SeedUsers(UserManager<IdentityUser> userManager, ILogger log)
+        public static async Task SeedUsers(UserManager<IdentityUser> userManager, ILogger log)
         {
             List<IdentityUser> Users = new List<IdentityUser>();
             //Kitchen
@@ -52,7 +52,7 @@ namespace Morgenmadsbuffeten.Data
                     if (result.Succeeded)
                     {
                         var roleClaim = new Claim("Role", userRoles[counter]);
-                        userManager.AddClaimAsync(applicationUser, roleClaim);
+                        await userManager.AddClaimAsync(applicationUser, roleClaim);
                     }
                 }
 
